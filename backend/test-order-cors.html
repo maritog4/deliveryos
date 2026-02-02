@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Order CORS</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        button { background: #3b82f6; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #2563eb; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 5px; }
+        .success { background: #d1fae5; border: 1px solid #10b981; }
+        .error { background: #fee2e2; border: 1px solid #ef4444; }
+        pre { background: #f3f4f6; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test de Creación de Orden con CORS</h1>
+    <p>Este test simula exactamente lo que hace el frontend React.</p>
+    
+    <button onclick="testCreateOrder()">🚀 Crear Orden de Prueba</button>
+    
+    <div id="result"></div>
+
+    <script>
+        async function testCreateOrder() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>⏳ Enviando petición...</p>';
+            
+            const orderData = {
+                customer_name: "Test CORS User",
+                customer_phone: "7777-7777",
+                customer_email: "test@cors.com",
+                delivery_address: "Test Address CORS",
+                delivery_zone_id: 1,
+                payment_method: "cash",
+                items: [
+                    {
+                        id: 1,
+                        name: "Pizza Test",
+                        price: 10.50,
+                        quantity: 2,
+                        special_instructions: ""
+                    }
+                ]
+            };
+
+            try {
+                console.log('📤 Enviando datos:', orderData);
+                
+                const response = await fetch('http://localhost/deliverySv/backend/api/orders/create.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
+                    },
+                    body: JSON.stringify(orderData)
+                });
+
+                console.log('📥 Response status:', response.status);
+                console.log('📥 Response headers:', [...response.headers.entries()]);
+
+                const data = await response.json();
+                console.log('📥 Response data:', data);
+
+                if (response.ok && data.success) {
+                    resultDiv.className = 'success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ Orden Creada Exitosamente</h3>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.className = 'error';
+                    resultDiv.innerHTML = `
+                        <h3>❌ Error al Crear Orden</h3>
+                        <p><strong>Status:</strong> ${response.status} ${response.statusText}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                console.error('❌ Error:', error);
+                resultDiv.className = 'error';
+                resultDiv.innerHTML = `
+                    <h3>❌ Error de Red o CORS</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <pre>${error.stack}</pre>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

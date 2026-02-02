@@ -1,0 +1,40 @@
+# DeliverySV - Docker Environment
+
+# Ignore node_modules
+frontend/node_modules/
+frontend/.next/
+frontend/build/
+frontend/dist/
+
+# Ignore vendor folders
+backend/vendor/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore uploaded files (keep structure but not files)
+backend/uploads/**
+!backend/uploads/.gitkeep
+!backend/uploads/products/.gitkeep
+!backend/uploads/restaurant/.gitkeep
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Database backups
+*.sql.gz
+backup/

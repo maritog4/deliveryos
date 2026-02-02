@@ -1,0 +1,175 @@
+REGULAR LICENSE
+
+Copyright (c) 2026 DeliveryOS
+
+This Regular License grants you, the purchaser, an ongoing, non-exclusive, worldwide license to make use of the digital work (Item) you have selected.
+
+---
+
+## WHAT YOU CAN DO WITH THIS LICENSE
+
+✅ **Single End Product**
+- You can use the Item to create one single End Product for yourself or for one client (a "single application").
+- The End Product must be a customized implementation of the Item for a specific customer/restaurant.
+
+✅ **Modify the Code**
+- You are licensed to use the Item to create one End Product for yourself or for one client, and you can modify the Item to suit your needs.
+
+✅ **Commercial Use**
+- You can use the Item to create an End Product that is used commercially (generates revenue).
+
+✅ **Distribute the End Product**
+- You can distribute the End Product to your client.
+
+---
+
+## WHAT YOU CANNOT DO WITH THIS LICENSE
+
+❌ **No Redistribution or Resale**
+- You can't re-distribute the Item as stock, in a tool or template, or with source files.
+- You can't do this with an Item either on its own or bundled with other items.
+- You can't re-distribute or make available the Item as-is or with superficial modifications.
+
+❌ **No Multiple End Products**
+- You can't use the Item to create more than one unique End Product.
+- For multiple projects, you need to purchase a separate license for each End Product.
+
+❌ **No SaaS Application**
+- You can't use the Item to create an End Product that is sold or distributed as a SaaS (Software as a Service) application where users pay a subscription fee to access the functionality.
+- For SaaS applications, you need an Extended License.
+
+❌ **No Sublicensing**
+- You can't sublicense the Item or any rights granted under this license.
+
+---
+
+## EXTENDED LICENSE
+
+If you need to:
+- Create multiple End Products (multiple restaurants/clients)
+- Build a SaaS platform
+- Offer the system as a subscription service
+- Resell the system to multiple customers
+
+**You need to purchase an Extended License.**
+
+Contact us for Extended License pricing and terms.
+
+---
+
+## DEFINITIONS
+
+**Item**: The digital work (DeliveryOS - Food Delivery Management System) that you have purchased.
+
+**End Product**: A customized implementation of the Item that is distributed to a single client or used by a single entity.
+
+**End User**: A user of the End Product (restaurant staff, customers, drivers).
+
+**Client**: The restaurant, business, or organization for whom you create the End Product.
+
+---
+
+## SUPPORT & UPDATES
+
+### What's Included
+- ✅ 6 months of support from purchase date
+- ✅ Free bug fixes and security patches
+- ✅ Minor version updates (1.0.x, 1.1.x)
+- ✅ Email support (24-48 hour response time)
+- ✅ Documentation access
+
+### What's NOT Included
+- ❌ Major version upgrades (may require additional purchase)
+- ❌ Customization services
+- ❌ Installation services
+- ❌ Third-party service fees (Stripe, SendGrid)
+- ❌ Server/hosting costs
+
+### Extended Support
+For priority support, installation assistance, or customization:
+- Contact: support@deliveryos.com
+- Response time: 4-8 hours
+- Available for Extended License holders
+
+---
+
+## WARRANTY & LIABILITY
+
+### Limited Warranty
+The Item is provided "as is" without warranty of any kind, either expressed or implied, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose.
+
+### Limitation of Liability
+In no event shall the author be liable for any special, incidental, indirect, or consequential damages whatsoever (including, without limitation, damages for loss of business profits, business interruption, loss of business information, or any other pecuniary loss) arising out of the use of or inability to use this Item.
+
+### Your Responsibility
+You are responsible for:
+- Proper installation and configuration
+- Server security and maintenance
+- Backup of your data
+- Compliance with local laws and regulations
+- Third-party service agreements (Stripe, SendGrid, etc.)
+
+---
+
+## TERMINATION
+
+This license is effective until terminated. Your rights under this license will terminate automatically if you fail to comply with any of its terms.
+
+Upon termination:
+- You must cease all use of the Item
+- Destroy all copies of the Item in your possession
+- Remove the Item from any End Products (if applicable)
+
+---
+
+## THIRD-PARTY COMPONENTS
+
+This Item may include third-party open-source components. Each component has its own license:
+
+- **React** - MIT License
+- **TailwindCSS** - MIT License
+- **Stripe SDK** - Apache License 2.0
+- **Socket.IO** - MIT License
+- **Heroicons** - MIT License
+
+These licenses are compatible with this Regular License and do not impose additional restrictions.
+
+---
+
+## GENERAL TERMS
+
+### Entire Agreement
+This license constitutes the entire agreement between you and the author concerning the Item.
+
+### Governing Law
+This license shall be governed by and construed in accordance with the laws of [Your Jurisdiction].
+
+### Severability
+If any provision of this license is held to be unenforceable, that provision will be removed and the remaining provisions will remain in full effect.
+
+### No Waiver
+The failure to exercise a right or require performance of an obligation under this license shall not affect a party's ability to exercise such right or require such performance at any time thereafter.
+
+---
+
+## CONTACT
+
+For licensing questions, custom licensing, or Extended License inquiries:
+
+**Email**: licensing@deliveryos.com  
+**Website**: https://deliveryos.com/license  
+**Support**: https://deliveryos.com/support  
+
+---
+
+## ACKNOWLEDGMENT
+
+By downloading, installing, or using this Item, you acknowledge that you have read this license, understand it, and agree to be bound by its terms and conditions.
+
+---
+
+**DeliveryOS - Food Delivery Management System**  
+Version 1.0.0  
+Released: January 2026  
+
+© 2026 DeliveryOS. All rights reserved.

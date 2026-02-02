@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .product img {
+            max-width: 200px;
+            height: auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .error {
+            color: red;
+            padding: 15px;
+            background: #fee;
+            border-radius: 5px;
+        }
+        .loading {
+            color: #666;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍕 Test de Productos</h1>
+    <div id="status" class="loading">Cargando productos...</div>
+    <div id="products"></div>
+
+    <script>
+        console.log('🚀 Iniciando prueba de productos...');
+        
+        // URL del API
+        const API_URL = 'http://localhost/deliverySv/backend/api/products/read.php?available=1';
+        
+        console.log('📡 URL:', API_URL);
+        
+        fetch(API_URL)
+            .then(response => {
+                console.log('✅ Respuesta recibida:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('📦 Datos:', data);
+                
+                const statusDiv = document.getElementById('status');
+                const productsDiv = document.getElementById('products');
+                
+                if (data.success && data.data && data.data.length > 0) {
+                    statusDiv.innerHTML = `✅ <strong>${data.data.length} productos encontrados</strong>`;
+                    statusDiv.style.color = 'green';
+                    
+                    data.data.forEach(product => {
+                        const productDiv = document.createElement('div');
+                        productDiv.className = 'product';
+                        productDiv.innerHTML = `
+                            <h3>${product.name}</h3>
+                            <p><strong>Precio:</strong> $${product.price}</p>
+                            <p><strong>Categoría:</strong> ${product.category_name || 'N/A'}</p>
+                            <p><strong>Disponible:</strong> ${product.is_available ? 'Sí' : 'No'}</p>
+                            ${product.image ? `<img src="${product.image}" alt="${product.name}">` : ''}
+                        `;
+                        productsDiv.appendChild(productDiv);
+                    });
+                } else {
+                    statusDiv.innerHTML = '❌ No se encontraron productos';
+                    statusDiv.className = 'error';
+                }
+            })
+            .catch(error => {
+                console.error('❌ Error:', error);
+                const statusDiv = document.getElementById('status');
+                statusDiv.innerHTML = `❌ Error al cargar productos: ${error.message}`;
+                statusDiv.className = 'error';
+            });
+    </script>
+</body>
+</html>

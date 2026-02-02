@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Checkout</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .result { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Test Checkout DeliverySV</h1>
+    
+    <button onclick="testOrder()">Probar Pedido</button>
+    
+    <div id="result"></div>
+    
+    <script>
+        async function testOrder() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>Enviando pedido...</p>';
+            
+            const orderData = {
+                customer_name: "Test Customer",
+                customer_phone: "7777-7777",
+                customer_email: "test@test.com",
+                delivery_address: "Colonia Escalón, Calle Test #123",
+                address_reference: "Casa blanca",
+                delivery_zone_id: "1",
+                payment_method: "cash",
+                notes: "Sin cebolla",
+                items: [
+                    {id: 1, name: "Pizza Margherita", price: 8.99, quantity: 2},
+                    {id: 2, name: "Refresco", price: 1.50, quantity: 1}
+                ],
+                coupon_code: null,
+                discount: 0
+            };
+            
+            try {
+                const response = await fetch('http://localhost/deliverySv/backend/api/orders/create.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderData)
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ Pedido creado exitosamente!</h3>
+                        <p><strong>Número de orden:</strong> ${data.data.order_number}</p>
+                        <p><strong>Total:</strong> $${data.data.total}</p>
+                    `;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `
+                        <h3>❌ Error al crear pedido</h3>
+                        <p>${data.message}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>❌ Error de conexión</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Direct Fetch</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; max-height: 400px; overflow: auto; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Directo de Fetch (Sin Axios)</h1>
+    
+    <button onclick="testFetchSimple()">1. Test Simple (Sin Headers Extra)</button>
+    <button onclick="testFetchConHeaders()">2. Test Con Headers de Caché</button>
+    <button onclick="testFetchCompleto()">3. Test Completo (Como React)</button>
+    <button onclick="testAxiosLike()">4. Test Simulando Axios</button>
+    
+    <div id="result"></div>
+
+    <script>
+        const resultDiv = document.getElementById('result');
+        
+        async function testFetchSimple() {
+            resultDiv.innerHTML = '<h3>⏳ Probando fetch simple...</h3>';
+            try {
+                const response = await fetch('http://localhost/deliverySv/backend/api/orders/create.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        customer_name: "Test Simple",
+                        customer_phone: "1234",
+                        customer_email: "test@test.com",
+                        delivery_address: "Test",
+                        delivery_zone_id: 1,
+                        payment_method: "cash",
+                        notes: "",
+                        items: [{id: 1, name: "Pizza", price: 10.50, quantity: 1, special_instructions: ""}]
+                    })
+                });
+                
+                const data = await response.json();
+                resultDiv.innerHTML = `<h3 class="success">✅ Éxito!</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<h3 class="error">❌ Error: ${error.message}</h3><pre>${error.stack}</pre>`;
+            }
+        }
+        
+        async function testFetchConHeaders() {
+            resultDiv.innerHTML = '<h3>⏳ Probando con headers de caché...</h3>';
+            try {
+                const response = await fetch('http://localhost/deliverySv/backend/api/orders/create.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
+                    },
+                    body: JSON.stringify({
+                        customer_name: "Test Con Headers",
+                        customer_phone: "1234",
+                        customer_email: "test@test.com",
+                        delivery_address: "Test",
+                        delivery_zone_id: 1,
+                        payment_method: "cash",
+                        notes: "",
+                        items: [{id: 1, name: "Pizza", price: 10.50, quantity: 1, special_instructions: ""}]
+                    })
+                });
+                
+                const data = await response.json();
+                resultDiv.innerHTML = `<h3 class="success">✅ Éxito!</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<h3 class="error">❌ Error: ${error.message}</h3><pre>${error.stack}</pre>`;
+            }
+        }
+        
+        async function testFetchCompleto() {
+            resultDiv.innerHTML = '<h3>⏳ Probando configuración completa...</h3>';
+            try {
+                const response = await fetch('http://localhost/deliverySv/backend/api/orders/create.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
+                    },
+                    credentials: 'include', // Esto puede causar problemas
+                    body: JSON.stringify({
+                        customer_name: "Test Completo",
+                        customer_phone: "1234",
+                        customer_email: "test@test.com",
+                        delivery_address: "Test",
+                        address_reference: "",
+                        delivery_zone_id: 1,
+                        payment_method: "cash",
+                        notes: "",
+                        coupon_code: null,
+                        discount: 0,
+                        items: [{id: 1, name: "Pizza", price: 10.50, quantity: 1, special_instructions: ""}]
+                    })
+                });
+                
+                const data = await response.json();
+                resultDiv.innerHTML = `<h3 class="success">✅ Éxito!</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<h3 class="error">❌ Error: ${error.message}</h3><pre>${error.stack}</pre>`;
+            }
+        }
+        
+        async function testAxiosLike() {
+            resultDiv.innerHTML = '<h3>⏳ Probando como Axios...</h3>';
+            try {
+                // Simular lo que hace axios
+                const response = await fetch('http://localhost/deliverySv/backend/api/orders/create.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0',
+                        'Accept': 'application/json, text/plain, */*'
+                    },
+                    body: JSON.stringify({
+                        customer_name: "Test Axios-Like",
+                        customer_phone: "1234",
+                        customer_email: "test@test.com",
+                        delivery_address: "Test",
+                        address_reference: "",
+                        delivery_zone_id: 1,
+                        payment_method: "cash",
+                        notes: "",
+                        coupon_code: null,
+                        discount: 0,
+                        items: [{id: 1, name: "Pizza", price: 10.50, quantity: 1, special_instructions: ""}]
+                    })
+                });
+                
+                const data = await response.json();
+                resultDiv.innerHTML = `<h3 class="success">✅ Éxito!</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<h3 class="error">❌ Error: ${error.message}</h3><pre>${error.stack}</pre>`;
+            }
+        }
+    </script>
+</body>
+</html>
