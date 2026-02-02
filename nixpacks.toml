@@ -1,11 +1,11 @@
 [phases.setup]
-nixPkgs = ["nodejs", "php82", "php82Packages.composer"]
+nixPkgs = ["nodejs", "php82"]
 
 [phases.install]
-cmds = ["cd frontend && npm ci"]
+cmds = ["npm ci --prefix frontend"]
 
 [phases.build]
-cmds = ["cd frontend && npm run build"]
+cmds = ["npm run build --prefix frontend"]
 
 [start]
 cmd = "php -S 0.0.0.0:$PORT -t ."
